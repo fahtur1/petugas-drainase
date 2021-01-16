@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/dimen5x"
+    android:layout_marginVertical="@dimen/dimen2x"
+    android:background="@drawable/bg_list_item_rounded"
+    android:elevation="@dimen/dimen2x">
+
+    <ImageView
+        android:id="@+id/iv_item_foto"
+        android:layout_width="104dp"
+        android:layout_height="104dp"
+
+        android:background="@color/lightGreyBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_item_lokasi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen2x"
+        android:fontFamily="@font/poppins_medium"
+        android:padding="0dp"
+        android:textColor="@color/textPrimaryVariant"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/tv_item_jenis"
+        app:layout_constraintStart_toEndOf="@id/iv_item_foto"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="Lokasi" />
+
+    <TextView
+        android:id="@+id/tv_item_jenis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_regular"
+        app:layout_constraintBottom_toBottomOf="@id/tv_item_status"
+        app:layout_constraintStart_toStartOf="@id/tv_item_lokasi"
+        app:layout_constraintTop_toBottomOf="@id/tv_item_lokasi"
+        tools:text="Jenis Pengaduan" />
+
+    <TextView
+        android:id="@+id/tv_item_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_bold"
+        android:textColor="@color/textPrimaryVariant"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tv_item_lokasi"
+        app:layout_constraintTop_toBottomOf="@id/tv_item_jenis"
+        tools:text="Status" />
+
+    <ImageView
+        android:layout_width="24dp"
+        android:layout_height="16dp"
+        android:layout_marginEnd="@dimen/dimen2x"
+        android:src="@drawable/ic_next"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

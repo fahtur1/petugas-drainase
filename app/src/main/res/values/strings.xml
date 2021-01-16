@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">PetugasDrainIt</string>
+    <string name="login_masuk">Masuk</string>
+    <string name="login_akses">Akses Akun</string>
+    <string name="login_email">Email</string>
+    <string name="login_password">Password</string>
+    <string name="login_sample_email">sample@email.com</string>
+    <string name="login_password_hint">********</string>
+    <string name="login_atau">atau masuk dengan email</string>
+
+    <string name="paragraf">Healthy eating means eating a variety
+of foods that give you the nutrients you
+need to maintain your health, feel good,
+and have energy.</string>
+
+
+</resources>
