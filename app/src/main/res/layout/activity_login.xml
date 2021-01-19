@@ -1,170 +1,186 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/lightGreyBackground">
+<layout>
 
-    <RelativeLayout
-        android:id="@+id/rl_login_head"
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.pcr.drainit.ui.login.LoginViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/primaryPetugas"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        android:background="@color/lightGreyBackground">
+
+        <RelativeLayout
+            android:id="@+id/rl_login_head"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/primaryPetugas"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_login_masuk"
+                style="@style/TextView.Bold.Petugas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/dimen4x"
+                android:text="@string/login_masuk"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/tv_login_akses"
+                style="@style/TextView.Medium.Petugas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_login_masuk"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/dimen3x"
+                android:text="@string/login_akses"
+                android:textSize="18sp" />
+
+        </RelativeLayout>
+
+        <ImageButton
+            android:id="@+id/google"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="@dimen/dimen6x"
+            android:adjustViewBounds="true"
+            android:background="@drawable/shape_rounded_white"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/googlelogo"
+            app:layout_constraintEnd_toStartOf="@id/facebook"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rl_login_head" />
+
+        <ImageButton
+            android:id="@+id/facebook"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_marginStart="20dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/shape_rounded_white"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="@dimen/dimen1x"
+            android:scaleType="fitCenter"
+            android:src="@drawable/fblogo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/google"
+            app:layout_constraintTop_toTopOf="@id/google" />
 
         <TextView
-            android:id="@+id/tv_login_masuk"
-            style="@style/TextView.Bold.Petugas"
+            android:id="@+id/tv_login_masukemail"
+            style="@style/TextView.Medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dimen1x"
+            android:text="@string/login_atau"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/facebook"
+            app:layout_constraintStart_toStartOf="@+id/google"
+            app:layout_constraintTop_toBottomOf="@+id/google" />
+
+        <TextView
+            android:id="@+id/tv_login_email"
+            style="@style/TextView.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen4x"
             android:layout_marginTop="@dimen/dimen4x"
-            android:text="@string/login_masuk"
-            android:textSize="25sp" />
+            android:text="@string/login_email"
+            android:textSize="19sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_login_masukemail" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_login_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimen3x"
+            android:elevation="@dimen/dimen2x"
+            app:hintEnabled="false"
+            app:layout_constraintTop_toBottomOf="@id/tv_login_email">
+
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/login_sample_email"
+                android:inputType="textEmailAddress"
+                android:text="@={viewModel.emailPetugas}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
-            android:id="@+id/tv_login_akses"
-            style="@style/TextView.Medium.Petugas"
+            android:id="@+id/tv_login_password"
+            style="@style/TextView.Medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tv_login_masuk"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="@dimen/dimen3x"
-            android:text="@string/login_akses"
-            android:textSize="18sp" />
+            android:layout_marginStart="@dimen/dimen4x"
+            android:layout_marginTop="@dimen/dimen1x"
+            android:text="@string/login_password"
+            android:textSize="19sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_login_email" />
 
-    </RelativeLayout>
-
-    <ImageButton
-        android:id="@+id/google"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="@dimen/dimen6x"
-        android:adjustViewBounds="true"
-        android:background="@drawable/shape_rounded_white"
-        android:clickable="true"
-        android:focusable="true"
-        android:padding="10dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/googlelogo"
-        app:layout_constraintEnd_toStartOf="@id/facebook"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/rl_login_head" />
-
-    <ImageButton
-        android:id="@+id/facebook"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
-        android:layout_marginStart="20dp"
-        android:adjustViewBounds="true"
-        android:background="@drawable/shape_rounded_white"
-        android:clickable="true"
-        android:focusable="true"
-        android:padding="@dimen/dimen1x"
-        android:scaleType="fitCenter"
-        android:src="@drawable/fblogo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/google"
-        app:layout_constraintTop_toTopOf="@id/google" />
-
-    <TextView
-        android:id="@+id/tv_login_masukemail"
-        style="@style/TextView.Medium"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimen1x"
-        android:text="@string/login_atau"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="@+id/facebook"
-        app:layout_constraintStart_toStartOf="@+id/google"
-        app:layout_constraintTop_toBottomOf="@+id/google" />
-
-    <TextView
-        android:id="@+id/tv_login_email"
-        style="@style/TextView.Medium"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dimen4x"
-        android:layout_marginTop="@dimen/dimen4x"
-        android:text="@string/login_email"
-        android:textSize="19sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_login_masukemail" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/et_login_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/dimen3x"
-        android:elevation="@dimen/dimen2x"
-        app:hintEnabled="false"
-        app:layout_constraintTop_toBottomOf="@id/tv_login_email">
-
-        <com.google.android.material.textfield.TextInputEditText
-            style="@style/EditText"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_login_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/login_sample_email"
-            android:inputType="textEmailAddress"
-            android:text="" />
+            android:layout_marginHorizontal="@dimen/dimen3x"
+            android:elevation="@dimen/dimen2x"
+            app:endIconMode="password_toggle"
+            app:endIconTint="@color/textColorHint"
+            app:hintEnabled="false"
+            app:layout_constraintTop_toBottomOf="@id/tv_login_password">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/login_password_hint"
+                android:inputType="textPassword"
+                android:text="@={viewModel.passPetugas}" />
 
-    <TextView
-        android:id="@+id/tv_login_password"
-        style="@style/TextView.Medium"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dimen4x"
-        android:layout_marginTop="@dimen/dimen1x"
-        android:text="@string/login_password"
-        android:textSize="19sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_login_email" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/et_login_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/dimen3x"
-        android:elevation="@dimen/dimen2x"
-        app:endIconMode="password_toggle"
-        app:endIconTint="@color/textColorHint"
-        app:hintEnabled="false"
-        app:layout_constraintTop_toBottomOf="@id/tv_login_password">
+        <ProgressBar
+            android:id="@+id/pb_login_loading"
+            android:layout_width="@dimen/dimen8x"
+            android:layout_height="@dimen/dimen8x"
+            android:layout_marginTop="@dimen/dimen2x"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_login_password"
+            tools:visibility="@{viewModel.loadingEnabled ? View.VISIBLE : View.GONE}" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            style="@style/EditText"
+        <Button
+            android:id="@+id/btn_login_masuk"
+            style="@style/Button.Petugas"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/login_password_hint"
-            android:inputType="textPassword"
-            android:text="" />
+            android:layout_height="@dimen/dimen8x"
+            android:layout_marginHorizontal="@dimen/dimen3x"
+            android:layout_marginTop="@dimen/dimen2x"
+            android:onClick="@{() -> viewModel.loginOnClick()}"
+            android:text="@string/login_masuk"
+            android:textSize="18sp"
+            app:layout_constraintTop_toBottomOf="@id/pb_login_loading"
+            tools:visibility="@{viewModel.loadingEnabled ? View.GONE: View.VISIBLE}" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ProgressBar
-        android:id="@+id/pb_login_loading"
-        android:layout_width="@dimen/dimen8x"
-        android:layout_height="@dimen/dimen8x"
-        android:layout_marginTop="@dimen/dimen2x"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_login_password"
-        tools:visibility="gone" />
-
-    <Button
-        android:id="@+id/btn_login_masuk"
-        style="@style/Button.Petugas"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen8x"
-        android:layout_marginHorizontal="@dimen/dimen3x"
-        android:layout_marginTop="@dimen/dimen2x"
-        android:text="@string/login_masuk"
-        android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@id/pb_login_loading" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
