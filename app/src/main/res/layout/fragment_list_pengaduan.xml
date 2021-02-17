@@ -1,92 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/lightGreyBackground">
+<layout>
 
-    <TextView
-        android:id="@+id/tv_pengaduan_pengaduan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimen4x"
-        android:fontFamily="@font/poppins_medium"
-        android:text="List Pengaduan"
-        android:textColor="@color/textPrimaryVariant"
-        android:textSize="23sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
 
-    <ImageView
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="@dimen/dimen4x"
-        android:background="@drawable/bg_ic_rounded"
-        android:contentDescription="TODO"
-        android:padding="@dimen/dimen1x"
-        android:src="@drawable/ic_settings"
-        app:layout_constraintBottom_toBottomOf="@id/tv_pengaduan_pengaduan"
-        app:layout_constraintStart_toEndOf="@id/tv_pengaduan_pengaduan"
-        app:layout_constraintTop_toTopOf="@id/tv_pengaduan_pengaduan" />
+        <import type="android.view.View" />
 
-    <Button
-        android:id="@+id/btn_pengaduan_semua"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Semua"
-        android:textAllCaps="false"
-        app:layout_constraintEnd_toStartOf="@id/btn_pengaduan_banjir"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/btn_pengaduan_banjir" />
+        <variable
+            name="viewModel"
+            type="com.pcr.drainit.ui.list.ListPengaduanViewModel" />
 
-    <Button
-        android:id="@+id/btn_pengaduan_banjir"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/dimen3x"
-        android:layout_marginTop="@dimen/dimen6x"
-        android:backgroundTint="@color/white"
-        android:text="Banjir"
-        android:textAllCaps="false"
-        android:textColor="@color/textPrimary"
-        app:layout_constraintBottom_toBottomOf="@id/btn_pengaduan_semua"
-        app:layout_constraintEnd_toStartOf="@id/btn_pengaduan_tersumbat"
-        app:layout_constraintStart_toEndOf="@id/btn_pengaduan_semua"
-        app:layout_constraintTop_toBottomOf="@id/tv_pengaduan_pengaduan" />
+    </data>
 
-    <Button
-        android:id="@+id/btn_pengaduan_tersumbat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/white"
-        android:text="Tersumbat"
-        android:textAllCaps="false"
-        android:textColor="@color/textPrimary"
-        app:layout_constraintBottom_toBottomOf="@id/btn_pengaduan_banjir"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btn_pengaduan_banjir"
-        app:layout_constraintTop_toTopOf="@id/btn_pengaduan_banjir" />
-
-    <TextView
-        android:id="@+id/tv_pengaduan_list"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimen2x"
-        android:fontFamily="@font/poppins_medium"
-        android:text="List"
-        android:textColor="@color/textPrimaryVariant"
-        android:textSize="25sp"
-        app:layout_constraintStart_toStartOf="@id/btn_pengaduan_semua"
-        app:layout_constraintTop_toBottomOf="@id/btn_pengaduan_banjir" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_pengaduan"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_pengaduan_list"
-        tools:listitem="@layout/item_list_pengaduan" />
+        android:layout_height="match_parent"
+        android:background="@color/lightGreyBackground">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tv_pengaduan_pengaduan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen4x"
+            android:fontFamily="@font/poppins_medium"
+            android:text="List Pengaduan"
+            android:textColor="@color/textPrimaryVariant"
+            android:textSize="23sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="@dimen/dimen4x"
+            android:background="@drawable/bg_ic_rounded"
+            android:contentDescription="TODO"
+            android:padding="@dimen/dimen1x"
+            android:src="@drawable/ic_settings"
+            app:layout_constraintBottom_toBottomOf="@id/tv_pengaduan_pengaduan"
+            app:layout_constraintStart_toEndOf="@id/tv_pengaduan_pengaduan"
+            app:layout_constraintTop_toTopOf="@id/tv_pengaduan_pengaduan" />
+
+        <Button
+            android:id="@+id/btn_pengaduan_semua"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Semua"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toStartOf="@id/btn_pengaduan_banjir"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/btn_pengaduan_banjir" />
+
+        <Button
+            android:id="@+id/btn_pengaduan_banjir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimen3x"
+            android:layout_marginTop="@dimen/dimen6x"
+            android:backgroundTint="@color/white"
+            android:text="Banjir"
+            android:textAllCaps="false"
+            android:textColor="@color/textPrimary"
+            app:layout_constraintBottom_toBottomOf="@id/btn_pengaduan_semua"
+            app:layout_constraintEnd_toStartOf="@id/btn_pengaduan_tersumbat"
+            app:layout_constraintStart_toEndOf="@id/btn_pengaduan_semua"
+            app:layout_constraintTop_toBottomOf="@id/tv_pengaduan_pengaduan" />
+
+        <Button
+            android:id="@+id/btn_pengaduan_tersumbat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:text="Tersumbat"
+            android:textAllCaps="false"
+            android:textColor="@color/textPrimary"
+            app:layout_constraintBottom_toBottomOf="@id/btn_pengaduan_banjir"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btn_pengaduan_banjir"
+            app:layout_constraintTop_toTopOf="@id/btn_pengaduan_banjir" />
+
+        <TextView
+            android:id="@+id/tv_pengaduan_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen2x"
+            android:fontFamily="@font/poppins_medium"
+            android:text="List"
+            android:textColor="@color/textPrimaryVariant"
+            android:textSize="25sp"
+            app:layout_constraintStart_toStartOf="@id/btn_pengaduan_semua"
+            app:layout_constraintTop_toBottomOf="@id/btn_pengaduan_banjir" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_pengaduan"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:visibility="@{viewModel.areListEmpty ? View.GONE : View.VISIBLE }"
+            app:layout_constraintTop_toBottomOf="@id/tv_pengaduan_list"
+            tools:listitem="@layout/item_list_pengaduan"
+            tools:visibility="gone" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="List pengaduan masih kosong"
+            android:visibility="@{viewModel.areListEmpty ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/rv_pengaduan" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

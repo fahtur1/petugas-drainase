@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation_bottom_nav"
+    app:startDestination="@id/nav_list">
+
+    <fragment
+        android:id="@+id/nav_map"
+        android:name="com.pcr.drainit.ui.map.MapFragment"
+        android:label="MapFragment" />
+    <fragment
+        android:id="@+id/nav_list"
+        android:name="com.pcr.drainit.ui.list.ListPengaduanFragment"
+        android:label="ListPengaduanFragment" />
+    <fragment
+        android:id="@+id/nav_profil"
+        android:name="com.pcr.drainit.ui.profil.ProfilFragment"
+        android:label="ProfilFragment" />
+
+</navigation>

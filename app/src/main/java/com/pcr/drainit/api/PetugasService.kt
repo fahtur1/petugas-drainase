@@ -1,5 +1,7 @@
 package com.pcr.drainit.api
 
+import com.pcr.drainit.model.Masyarakat
+import com.pcr.drainit.model.MasyarakatLoginResponse
 import com.pcr.drainit.model.Petugas
 import com.pcr.drainit.model.PetugasLoginResponse
 import retrofit2.Response
@@ -13,4 +15,9 @@ interface PetugasService {
         @Body petugas: Petugas
     ): Response<PetugasLoginResponse>
 
+
+    @POST("api/login/masyarakat")
+    suspend fun loginMasyarakat(
+        @Body masyarakat: Masyarakat
+    ): Response<MasyarakatLoginResponse>
 }

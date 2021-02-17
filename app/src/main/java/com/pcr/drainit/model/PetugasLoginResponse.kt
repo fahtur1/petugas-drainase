@@ -1,6 +1,5 @@
 package com.pcr.drainit.model
 
-
 import android.os.Parcel
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
@@ -14,7 +13,7 @@ data class PetugasLoginResponse(
     var statusCode: Int,
     @SerializedName("user")
     var petugas: Petugas
-): Parcelable {
+) : Parcelable {
 
     constructor(parcel: Parcel) : this(
         parcel.readString(),

@@ -22,20 +22,6 @@ object Session {
         dataStore = context.createDataStore(name = "session")
     }
 
-//    suspend fun setSession(token: String) {
-//        val dataStoreKey = stringPreferencesKey(KEY)
-//        dataStore?.edit { session ->
-//            session[dataStoreKey] = token
-//        }
-//    }
-//
-//    suspend fun getSession(): String? {
-//        val dataStoreKey = stringPreferencesKey(KEY)
-//        val preferences = dataStore?.data?.first()
-//
-//        return preferences?.get(dataStoreKey)
-//    }
-
     fun unset() {
         GlobalScope.launch {
             dataStore?.edit { session ->

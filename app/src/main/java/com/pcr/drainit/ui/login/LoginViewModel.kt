@@ -1,6 +1,5 @@
 package com.pcr.drainit.ui.login
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.pcr.drainit.model.Petugas
@@ -8,10 +7,13 @@ import com.pcr.drainit.repository.MainRepository
 import com.pcr.drainit.ui.BaseViewModel
 import com.pcr.drainit.utill.Resource
 import com.pcr.drainit.utill.Session
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class LoginViewModel @ViewModelInject constructor(
+@HiltViewModel
+class LoginViewModel @Inject constructor(
     private val repository: MainRepository
 ) : BaseViewModel() {
 
@@ -21,6 +23,7 @@ class LoginViewModel @ViewModelInject constructor(
         const val ACTION_LOGIN_TIMEOUT = "action_login_timeout"
         const val ACTION_LOGIN_FORM_BLANK = "action_login_form_blank"
         const val ACTION_LOGIN_USER_LOGGEDIN = "action_login_user_loggedin"
+        const val ACTION_LOGIN_INVALID = "action_login_invalid"
     }
 
     val emailPetugas = MutableLiveData<String>()
@@ -45,6 +48,10 @@ class LoginViewModel @ViewModelInject constructor(
                             }
                             401 -> {
                                 action.postValue(ACTION_LOGIN_FAILED)
+                                loadingEnabled.postValue(false)
+                            }
+                            403 -> {
+                                action.postValue(ACTION_LOGIN_INVALID)
                                 loadingEnabled.postValue(false)
                             }
                         }

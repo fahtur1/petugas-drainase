@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.pcr.drainit.ui.profil.ProfilViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".fragment.ProfileFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/profil_header"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@color/primaryVariant"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/middle_of_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="100dp" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_profil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen4x"
+            app:cardCornerRadius="@dimen/dimen2x"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/middle_of_header">
+
+            <ImageView
+                android:id="@+id/iv_profil_gambar"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/sampel" />
+
+        </androidx.cardview.widget.CardView>
+
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="@dimen/dimen6x"
+            android:background="@drawable/bg_ic_rounded"
+            android:contentDescription="TODO"
+            android:elevation="@dimen/dimen2x"
+            android:padding="@dimen/dimen1x"
+            android:src="@drawable/ic_settings"
+            app:layout_constraintBottom_toBottomOf="@id/cv_profil"
+            app:layout_constraintStart_toEndOf="@id/cv_profil"
+            app:layout_constraintTop_toTopOf="@id/cv_profil" />
+
+        <TextView
+            android:id="@+id/tv_profil_nama"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen2x"
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="@color/textPrimaryVariant"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="@id/cv_profil"
+            app:layout_constraintStart_toStartOf="@id/cv_profil"
+            app:layout_constraintTop_toBottomOf="@id/cv_profil"
+            tools:text="Fahturrahman Fauzi" />
+
+        <TextView
+            android:id="@+id/tv_profil_handphone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:textSize="17sp"
+            app:layout_constraintEnd_toEndOf="@id/cv_profil"
+            app:layout_constraintStart_toStartOf="@id/cv_profil"
+            app:layout_constraintTop_toBottomOf="@id/tv_profil_nama"
+            tools:text="082171933874" />
+
+        <ImageView
+            android:id="@+id/iv_profil_email"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="@dimen/dimen5x"
+            android:layout_marginTop="@dimen/dimen4x"
+            android:background="@drawable/bg_ic_green_rounded"
+            android:padding="13dp"
+            android:src="@drawable/ic_email"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_profil_handphone" />
+
+        <TextView
+            android:id="@+id/tv_profil_email_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen2x"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Email"
+            android:textColor="@color/textPrimaryVariant"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/tv_profil_email"
+            app:layout_constraintStart_toEndOf="@id/iv_profil_email"
+            app:layout_constraintTop_toTopOf="@id/iv_profil_email"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/tv_profil_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="@id/iv_profil_email"
+            app:layout_constraintStart_toStartOf="@id/tv_profil_email_text"
+            app:layout_constraintTop_toBottomOf="@id/tv_profil_email_text"
+            tools:text="fahturrahman18ti@mahasiswa.pcr.ac.id" />
+
+        <View
+            android:id="@+id/line_separator1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="@dimen/dimen5x"
+            android:layout_marginVertical="@dimen/dimen2x"
+            android:background="#DFDFDF"
+            app:layout_constraintTop_toBottomOf="@id/iv_profil_email" />
+
+        <ImageView
+            android:id="@+id/iv_profil_alamat"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="@dimen/dimen5x"
+            android:layout_marginTop="@dimen/dimen2x"
+            android:background="@drawable/bg_ic_orange_rounded"
+            android:padding="13dp"
+            android:src="@drawable/ic_alamat"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/line_separator2" />
+
+        <TextView
+            android:id="@+id/tv_profil_alamat_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen2x"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Alamat"
+            android:textColor="@color/textPrimaryVariant"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@id/iv_profil_alamat"
+            app:layout_constraintTop_toTopOf="@id/iv_profil_alamat" />
+
+        <TextView
+            android:id="@+id/tv_profil_alamat"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dimen5x"
+            android:fontFamily="@font/poppins_medium"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tv_profil_alamat_text"
+            app:layout_constraintTop_toBottomOf="@id/tv_profil_alamat_text"
+            tools:text="Jalan Tegal Sari Nomor 89B Blok C Perum Dosen RT 04 RW 08 Kecamatan Rumbai Raya Kota Pekanbaru Provinsi Riau" />
+
+        <View
+            android:id="@+id/line_separator2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="@dimen/dimen5x"
+            android:layout_marginVertical="@dimen/dimen2x"
+            android:background="#DFDFDF"
+            app:layout_constraintTop_toBottomOf="@id/iv_profil_posisi" />
+
+        <ImageView
+            android:id="@+id/iv_profil_posisi"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="@dimen/dimen5x"
+            android:layout_marginTop="@dimen/dimen2x"
+            android:background="@drawable/bg_ic_blue_rounded"
+            android:padding="13dp"
+            android:src="@drawable/ic_posisi"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/line_separator1" />
+
+        <TextView
+            android:id="@+id/tv_profil_posisi_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen2x"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Posisi"
+            android:textColor="@color/textPrimaryVariant"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@id/iv_profil_posisi"
+            app:layout_constraintTop_toTopOf="@id/iv_profil_posisi" />
+
+        <TextView
+            android:id="@+id/tv_profil_posisi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dimen5x"
+            android:fontFamily="@font/poppins_medium"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="@id/tv_profil_posisi_text"
+            app:layout_constraintTop_toBottomOf="@id/tv_profil_posisi_text"
+            tools:text="Bos Besar aamiin" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
