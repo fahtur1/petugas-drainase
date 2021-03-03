@@ -58,6 +58,7 @@ class ListPengaduanFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         listPengaduanViewModel.getListPengaduan()
+        listPengaduanViewModel.filterData(ListPengaduanViewModel.SINGLE_ITEM[checkedItem])
     }
 
     private fun onDataFiltered() {

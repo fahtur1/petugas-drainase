@@ -20,4 +20,10 @@ interface PetugasService {
         @Header("Authorization") token: String
     ): Response<Petugas>
 
+    @POST("petugas")
+    suspend fun updatePetugasProfile(
+        @Header("Accept") accept: String,
+        @Header("Authorization") token: String
+    )
+
 }

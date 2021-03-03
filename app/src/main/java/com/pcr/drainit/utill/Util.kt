@@ -9,7 +9,7 @@ object Util {
         val geometry = json?.let { JSONObject(it) }
         val coord = geometry?.getJSONArray("coordinates")
 
-        return LatLng(coord?.get(0) as Double, coord.get(1) as Double)
+        return LatLng(coord?.getDouble(0) ?: 0.0, coord?.getDouble(1) ?: 0.0)
     }
 
 }

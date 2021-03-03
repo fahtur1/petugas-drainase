@@ -45,11 +45,16 @@ class DetailRiwayatViewModel @Inject constructor(
         if (editEnabled.value == true) {
             if (tempValue != "" && tempValue != laporanPetugas.value) {
                 action.value = ACTION_DETAIL_CANCEL_EDIT
-                laporanPetugas.value = tempValue
+            } else {
+                editEnabled.value = editEnabled.value?.let { !it }
             }
         } else {
             editEnabled.value = editEnabled.value?.let { !it }
         }
+    }
+
+    fun resetLaporanValue() {
+        laporanPetugas.value = tempValue
     }
 
     fun submitEditButtonOnClick() {

@@ -180,6 +180,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="@dimen/dimen1x"
                         android:elevation="@dimen/dimen2x"
+
                         android:visibility="@{viewModel.editEnabled ? View.VISIBLE : View.GONE}"
                         app:hintEnabled="false"
                         app:layout_constraintEnd_toEndOf="@id/tv_jenis_detail_pengaduan"
@@ -190,8 +191,11 @@
                             style="@style/EditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:gravity="start"
                             android:inputType="textMultiLine"
                             android:lines="2"
+                            android:maxLines="3"
+                            android:minLines="2"
                             android:text="@={viewModel.laporanPetugas}"
                             android:textSize="16sp" />
 

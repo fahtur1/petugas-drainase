@@ -48,10 +48,12 @@ class ListPengaduanViewModel @Inject constructor(
                     when (response.statusCode) {
                         HttpURLConnection.HTTP_OK -> {
                             listPengaduanItem.clear()
+                            listTempItem.clear()
+
                             response.data?.forEach { item ->
                                 listPengaduanItem.add(item)
+                                listTempItem.add(item)
                             }
-                            listTempItem.addAll(listPengaduanItem)
 
                             areListEmpty.postValue(listPengaduanItem.isEmpty())
                             action.postValue(ACTION_PENGADUAN_LISTUPDATE)
@@ -72,10 +74,11 @@ class ListPengaduanViewModel @Inject constructor(
 
         when (type) {
             TYPE_SEMUA -> {
-                listPengaduanItem.apply {
-                    clear()
-                    addAll(listTempItem)
+                listPengaduanItem.clear()
+                listTempItem.forEach {
+                    listPengaduanItem.add(it)
                 }
+
                 action.value = ACTION_PENGADUAN_LISTUPDATE
             }
             TYPE_BANJIR -> {

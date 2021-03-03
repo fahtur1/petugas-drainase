@@ -82,7 +82,14 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                                 MarkerOptions()
                                     .position(Util.geoToLatLong(item.geometry))
                                     .title("Titik ${item.tipePengaduan}")
-                                    .snippet(item.namaJalan?.substring(0, 30))
+                                    .snippet(
+                                        "${
+                                            item.namaJalan?.substring(
+                                                0,
+                                                30
+                                            )
+                                        } | (${item.statusPengaduan})"
+                                    )
                                     .icon(color)
                             )
 
@@ -94,7 +101,14 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                                 MarkerOptions()
                                     .position(Util.geoToLatLong(item.geometry))
                                     .title("Titik ${item.tipePengaduan}")
-                                    .snippet(item.namaJalan?.substring(0, 30))
+                                    .snippet(
+                                        "${
+                                            item.namaJalan?.substring(
+                                                0,
+                                                20
+                                            )
+                                        } | (${item.statusPengaduan})"
+                                    )
                             )
 
                             this@MapFragment.listPengaduan.add(marker)

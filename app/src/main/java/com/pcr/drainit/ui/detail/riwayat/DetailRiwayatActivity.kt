@@ -1,6 +1,5 @@
 package com.pcr.drainit.ui.detail.riwayat
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -10,8 +9,6 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.pcr.drainit.R
 import com.pcr.drainit.databinding.ActivityDetailRiwayatBinding
 import com.pcr.drainit.model.enitity.Pengaduan
-import com.pcr.drainit.ui.login.LoginActivity
-import com.pcr.drainit.utill.Session
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -62,6 +59,7 @@ class DetailRiwayatActivity : AppCompatActivity() {
             .setMessage("Yakin ingin buang perubahan ?")
             .setPositiveButton("Ya") { _, _ ->
                 detailRiwayatViewModel.editEnabled.value = false
+                detailRiwayatViewModel.resetLaporanValue()
             }
             .setNegativeButton("Batal") { dialog, _ ->
                 dialog.dismiss()

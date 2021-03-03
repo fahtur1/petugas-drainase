@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/dimen4x"
-        android:layout_marginTop="@dimen/dimen2x"
+        android:layout_marginVertical="@dimen/dimen1x"
         android:elevation="@dimen/dimen6x"
         app:cardCornerRadius="@dimen/dimen1x">
 
