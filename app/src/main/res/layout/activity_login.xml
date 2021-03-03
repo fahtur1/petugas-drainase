@@ -22,7 +22,7 @@
             android:id="@+id/rl_login_head"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/primaryPetugas"
+            android:background="@color/primaryVariant"
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView

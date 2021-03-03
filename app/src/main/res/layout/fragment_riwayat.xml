@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -9,11 +8,11 @@
 
         <variable
             name="viewModel"
-            type="com.pcr.drainit.ui.pengaduan.ListPengaduanViewModel" />
+            type="com.pcr.drainit.ui.riwayat.RiwayatViewModel" />
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/lightGreyBackground">
@@ -24,54 +23,43 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen4x"
             android:fontFamily="@font/poppins_medium"
-            android:text="List Pengaduan"
+            android:text="List Riwayat Pengaduan"
             android:textColor="@color/textPrimaryVariant"
             android:textSize="23sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="@dimen/dimen4x"
-            android:background="@drawable/bg_ic_rounded"
-            android:onClick="@{() -> viewModel.filterOnClick()}"
-            android:padding="@dimen/dimen1x"
-            android:src="@drawable/ic_settings"
-            app:layout_constraintBottom_toBottomOf="@id/tv_pengaduan_pengaduan"
-            app:layout_constraintStart_toEndOf="@id/tv_pengaduan_pengaduan"
-            app:layout_constraintTop_toTopOf="@id/tv_pengaduan_pengaduan" />
-
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_pengaduan"
+            android:id="@+id/rv_riwayat"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="@dimen/dimen2x"
+            android:layout_marginTop="@dimen/dimen1x"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_pengaduan_pengaduan"
-            tools:itemCount="5"
+            tools:itemCount="2"
             tools:listitem="@layout/item_list_pengaduan" />
 
         <ProgressBar
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:visibility="@{viewModel.loadingEnabled ? View.VISIBLE: View.GONE}"
-            app:layout_constraintBottom_toTopOf="@+id/textView"
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:visibility="@{viewModel.loadingEnabled ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="@id/tv_riwayat_indikator"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rv_pengaduan" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/tv_riwayat_indikator"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="List Pengaduan belum tersedia"
-            android:visibility="@{viewModel.areListEmpty ? View.VISIBLE : View.GONE}"
+            android:text="Riwayat pengaduan masih kosong, \n Assign terlebih dahulu"
+            android:textAlignment="center"
+            android:visibility="@{viewModel.areListEmpty ? View.VISIBLE : View.GONE }"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/rv_pengaduan" />
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

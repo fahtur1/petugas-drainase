@@ -33,6 +33,7 @@ object NetworkModule {
     } else {
         OkHttpClient
             .Builder()
+            .retryOnConnectionFailure(true)
             .build()
     }
 

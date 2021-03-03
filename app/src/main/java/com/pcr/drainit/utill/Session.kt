@@ -36,7 +36,7 @@ object Session {
                 val dataStoreKey = stringPreferencesKey(TOKEN_BEARER_KEY)
                 val preferences = dataStore?.data?.first()
 
-                preferences?.get(dataStoreKey)
+                "Bearer " + preferences?.get(dataStoreKey)
             }
         set(value) {
             GlobalScope.launch {

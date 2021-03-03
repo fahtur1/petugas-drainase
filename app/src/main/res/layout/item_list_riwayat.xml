@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.pcr.drainit.ui.pengaduan.ListPengaduanViewModel" />
+            type="com.pcr.drainit.ui.riwayat.RiwayatViewModel" />
 
         <variable
             name="position"
@@ -48,7 +48,6 @@
                 android:layout_marginStart="@dimen/dimen2x"
                 android:fontFamily="@font/poppins_medium"
                 android:maxLength="20"
-                android:maxLines="1"
                 android:text="@{data.namaJalan}"
                 android:textColor="@color/textPrimaryVariant"
                 android:textSize="16sp"

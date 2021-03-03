@@ -1,4 +1,4 @@
-package com.pcr.drainit.model
+package com.pcr.drainit.model.enitity
 
 import com.google.gson.annotations.SerializedName
 

@@ -2,14 +2,16 @@ package com.pcr.drainit.ui.login
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.pcr.drainit.model.Petugas
+import com.pcr.drainit.model.enitity.Petugas
 import com.pcr.drainit.repository.MainRepository
 import com.pcr.drainit.ui.BaseViewModel
 import com.pcr.drainit.utill.Resource
 import com.pcr.drainit.utill.Session
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.net.HttpURLConnection
 import javax.inject.Inject
 
 @HiltViewModel
@@ -40,21 +42,19 @@ class LoginViewModel @Inject constructor(
 
                 when (val result = repository.petugasLogin(petugas)) {
                     is Resource.Success -> {
-                        when (result.data?.statusCode) {
-                            200 -> {
-                                Session.bearer = result.data.accessToken
+                        when (result.statusCode) {
+                            HttpURLConnection.HTTP_OK -> {
+                                Session.bearer = result.data?.accessToken
                                 action.postValue(ACTION_LOGIN_SUCCESS)
-                                loadingEnabled.postValue(false)
                             }
-                            401 -> {
+                            HttpURLConnection.HTTP_UNAUTHORIZED -> {
                                 action.postValue(ACTION_LOGIN_FAILED)
-                                loadingEnabled.postValue(false)
                             }
-                            403 -> {
+                            HttpURLConnection.HTTP_FORBIDDEN -> {
                                 action.postValue(ACTION_LOGIN_INVALID)
-                                loadingEnabled.postValue(false)
                             }
                         }
+                        loadingEnabled.postValue(false)
                     }
                     is Resource.Error -> {
                         action.postValue(ACTION_LOGIN_TIMEOUT)
@@ -69,8 +69,16 @@ class LoginViewModel @Inject constructor(
     }
 
     fun checkSession() {
-        if (!Session.bearer.isNullOrEmpty()) {
-            action.value = ACTION_LOGIN_USER_LOGGEDIN
+        viewModelScope.launch {
+            delay(500L)
+
+            loadingEnabled.postValue(true)
+
+            if (Session.bearer != "Bearer null") {
+                action.postValue(ACTION_LOGIN_USER_LOGGEDIN)
+            } else {
+                loadingEnabled.postValue(false)
+            }
         }
     }
 

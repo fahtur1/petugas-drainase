@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="data"
+            type="com.pcr.drainit.model.enitity.Pengaduan" />
+
+        <variable
+            name="viewModel"
+            type="com.pcr.drainit.ui.detail.riwayat.DetailRiwayatViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/lightGreyBackground">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="@dimen/dimen4x"
+            android:layout_marginTop="@dimen/dimen4x"
+            android:background="@drawable/bg_ic_rounded"
+            android:clickable="true"
+            android:elevation="@dimen/dimen1x"
+            android:focusable="true"
+            android:onClick="@{() -> viewModel.onBackButtonClick()}"
+            android:padding="@dimen/dimen1x"
+            android:src="@drawable/ic_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="@dimen/dimen4x"
+            android:layout_marginEnd="@dimen/dimen4x"
+            android:background="@drawable/bg_ic_rounded"
+            android:clickable="true"
+            android:elevation="@dimen/dimen1x"
+            android:focusable="true"
+            android:onClick="@{() -> viewModel.onEditButtonClick()}"
+            android:padding="@dimen/dimen1x"
+            android:src="@{viewModel.editEnabled ? @drawable/ic_cancel : @drawable/ic_edit}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_gambar_detail_pengaduan"
+            android:layout_width="match_parent"
+            android:layout_height="256dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/sampel"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_gambar_detail_pengaduan">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="1200dp"
+                android:paddingBottom="@dimen/dimen2x">
+
+                <TextView
+                    android:id="@+id/tv_lokasi_detail_pengaduan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen4x"
+                    android:layout_marginTop="@dimen/dimen2x"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Detail Pengaduan"
+                    android:textColor="@color/textPrimaryVariant"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_jenis_detail_pengaduan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dimen4x"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="@{data.tipePengaduan}"
+                    android:textColor="@color/primaryPetugas"
+                    android:textSize="13sp"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_lokasi_detail_pengaduan"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tv_lokasi_detail_pengaduan"
+                    tools:text="Jenis Pengaduan" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/dimen2x"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="@dimen/dimen4x"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_lokasi_detail_pengaduan">
+
+                    <TextView
+                        android:id="@+id/tv_deskripsi_detail_pengaduan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
+                        android:lineSpacingExtra="1dp"
+                        android:text="@{data.namaJalan}"
+                        android:textColor="@color/textGrey"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="@id/tv_jenis_detail_pengaduan"
+                        app:layout_constraintStart_toStartOf="@id/tv_lokasi_detail_pengaduan"
+                        app:layout_constraintTop_toBottomOf="@id/tv_lokasi_detail_pengaduan"
+                        tools:text="@string/paragraf" />
+
+
+                    <TextView
+                        android:id="@+id/tv_judul_status_detail_pengaduan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen1x"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Status"
+                        android:textColor="@color/textPrimaryVariant"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toStartOf="@id/tv_lokasi_detail_pengaduan"
+                        app:layout_constraintTop_toBottomOf="@id/tv_deskripsi_detail_pengaduan" />
+
+                    <TextView
+                        android:id="@+id/tv_status_detail_pengaduan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="@{data.statusPengaduan}"
+                        android:textColor="@color/primaryPetugas"
+                        android:textSize="16sp"
+                        app:layout_constraintStart_toStartOf="@id/tv_lokasi_detail_pengaduan"
+                        app:layout_constraintTop_toBottomOf="@id/tv_judul_status_detail_pengaduan"
+                        tools:text="Status" />
+
+                    <TextView
+                        android:id="@+id/tv_judul_laporan_detail_pengaduan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen1x"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Laporan Petugas"
+                        android:textColor="@color/textPrimaryVariant"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toStartOf="@id/tv_lokasi_detail_pengaduan"
+                        app:layout_constraintTop_toBottomOf="@id/tv_status_detail_pengaduan" />
+
+                    <TextView
+                        android:id="@+id/tv_laporan_detail_pengaduan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
+                        android:lineSpacingExtra="1dp"
+                        android:text="@{data.laporanPetugas}"
+                        android:textColor="@color/textGrey"
+                        android:textSize="16sp"
+                        android:visibility="@{viewModel.editEnabled ? View.GONE : View.VISIBLE}"
+                        app:layout_constraintEnd_toEndOf="@id/tv_jenis_detail_pengaduan"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@id/tv_judul_laporan_detail_pengaduan"
+                        app:layout_constraintTop_toBottomOf="@id/tv_judul_laporan_detail_pengaduan"
+                        tools:text="@string/paragraf" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/et_login_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="@dimen/dimen1x"
+                        android:elevation="@dimen/dimen2x"
+                        android:visibility="@{viewModel.editEnabled ? View.VISIBLE : View.GONE}"
+                        app:hintEnabled="false"
+                        app:layout_constraintEnd_toEndOf="@id/tv_jenis_detail_pengaduan"
+                        app:layout_constraintStart_toStartOf="@id/tv_judul_laporan_detail_pengaduan"
+                        app:layout_constraintTop_toBottomOf="@id/tv_judul_laporan_detail_pengaduan">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            style="@style/EditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textMultiLine"
+                            android:lines="2"
+                            android:text="@={viewModel.laporanPetugas}"
+                            android:textSize="16sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <TextView
+                        android:id="@+id/tv_judul_feedback_detail_pengaduan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen1x"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Feedback Masyarakat"
+                        android:textColor="@color/textPrimaryVariant"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toStartOf="@id/tv_judul_laporan_detail_pengaduan"
+                        app:layout_constraintTop_toBottomOf="@id/tv_laporan_detail_pengaduan" />
+
+                    <TextView
+                        android:id="@+id/tv_feedback_detail_pengaduan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
+                        android:lineSpacingExtra="1dp"
+                        android:text="@{data.feedbackMasyarakat}"
+                        android:textColor="@color/textGrey"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="@id/tv_jenis_detail_pengaduan"
+                        app:layout_constraintStart_toStartOf="@id/tv_judul_feedback_detail_pengaduan"
+                        app:layout_constraintTop_toBottomOf="@id/tv_judul_feedback_detail_pengaduan"
+                        tools:text="Belum ada" />
+
+                    <Button
+                        android:id="@+id/btn_assign"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen2x"
+                        android:onClick="@{() -> viewModel.submitEditButtonOnClick()}"
+                        android:text="Edit"
+                        android:visibility="@{viewModel.editEnabled ? (viewModel.loadingEnabled ? View.GONE : View.VISIBLE) : View.GONE}"
+                        app:layout_constraintEnd_toEndOf="@id/tv_jenis_detail_pengaduan"
+                        app:layout_constraintTop_toBottomOf="@id/tv_feedback_detail_pengaduan" />
+
+                    <ProgressBar
+                        android:id="@+id/pb_assign"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="@dimen/dimen2x"
+                        android:layout_marginEnd="@dimen/dimen2x"
+                        android:visibility="@{viewModel.loadingEnabled ? View.VISIBLE : View.GONE}"
+                        app:layout_constraintEnd_toEndOf="@id/tv_feedback_detail_pengaduan"
+                        app:layout_constraintTop_toBottomOf="@id/tv_feedback_detail_pengaduan"
+                        tools:visibility="gone" />
+
+                </LinearLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

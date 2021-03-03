@@ -10,11 +10,15 @@
         android:label="MapFragment" />
     <fragment
         android:id="@+id/nav_list"
-        android:name="com.pcr.drainit.ui.list.ListPengaduanFragment"
+        android:name="com.pcr.drainit.ui.pengaduan.ListPengaduanFragment"
         android:label="ListPengaduanFragment" />
     <fragment
         android:id="@+id/nav_profil"
         android:name="com.pcr.drainit.ui.profil.ProfilFragment"
         android:label="ProfilFragment" />
+    <fragment
+        android:id="@+id/nav_riwayat"
+        android:name="com.pcr.drainit.ui.riwayat.RiwayatFragment"
+        android:label="RiwayatFragment" />
 
 </navigation>

@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="data"
+            type="com.pcr.drainit.model.enitity.Pengaduan" />
+
+        <variable
+            name="viewModel"
+            type="com.pcr.drainit.ui.detail.pengaduan.DetailPengaduanViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/lightGreyBackground">
@@ -15,6 +31,7 @@
             android:clickable="true"
             android:elevation="@dimen/dimen1x"
             android:focusable="true"
+            android:onClick="@{() -> viewModel.backBtnOnClick()}"
             android:padding="@dimen/dimen1x"
             android:src="@drawable/ic_back"
             app:layout_constraintStart_toStartOf="parent"
@@ -46,9 +63,9 @@
                     android:layout_marginStart="@dimen/dimen4x"
                     android:layout_marginTop="@dimen/dimen2x"
                     android:fontFamily="@font/poppins_bold"
-                    android:text="Lokasi"
+                    android:text="Detail Pengaduan"
                     android:textColor="@color/textPrimaryVariant"
-                    android:textSize="26sp"
+                    android:textSize="20sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -58,32 +75,33 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/dimen4x"
                     android:fontFamily="@font/poppins_medium"
-                    android:text="Jenis Pengaduan"
+                    android:text="@{data.tipePengaduan}"
                     android:textColor="@color/primaryPetugas"
                     android:textSize="13sp"
                     app:layout_constraintBottom_toBottomOf="@id/tv_lokasi_detail_pengaduan"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/tv_lokasi_detail_pengaduan" />
+                    app:layout_constraintTop_toTopOf="@id/tv_lokasi_detail_pengaduan"
+                    tools:text="Jenis Pengaduan" />
 
-                <ImageView
-                    android:id="@+id/iv_jam_detail_pengaduan"
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
-                    android:src="@drawable/ic_time"
-                    app:layout_constraintStart_toStartOf="@id/tv_lokasi_detail_pengaduan"
-                    app:layout_constraintTop_toBottomOf="@id/tv_lokasi_detail_pengaduan" />
+                <!--                <ImageView-->
+                <!--                    android:id="@+id/iv_jam_detail_pengaduan"-->
+                <!--                    android:layout_width="18dp"-->
+                <!--                    android:layout_height="18dp"-->
+                <!--                    android:src="@drawable/ic_time"-->
+                <!--                    app:layout_constraintStart_toStartOf="@id/tv_lokasi_detail_pengaduan"-->
+                <!--                    app:layout_constraintTop_toBottomOf="@id/tv_lokasi_detail_pengaduan" />-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/dimen1x"
-                    android:fontFamily="@font/poppins_regular"
-                    android:text="Time"
-                    android:textColor="@color/textGrey"
-                    android:textSize="15sp"
-                    app:layout_constraintBottom_toBottomOf="@id/iv_jam_detail_pengaduan"
-                    app:layout_constraintStart_toEndOf="@id/iv_jam_detail_pengaduan"
-                    app:layout_constraintTop_toTopOf="@id/iv_jam_detail_pengaduan" />
+                <!--                <TextView-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginStart="@dimen/dimen1x"-->
+                <!--                    android:fontFamily="@font/poppins_regular"-->
+                <!--                    android:text="Time"-->
+                <!--                    android:textColor="@color/textGrey"-->
+                <!--                    android:textSize="15sp"-->
+                <!--                    app:layout_constraintBottom_toBottomOf="@id/iv_jam_detail_pengaduan"-->
+                <!--                    app:layout_constraintStart_toEndOf="@id/iv_jam_detail_pengaduan"-->
+                <!--                    app:layout_constraintTop_toTopOf="@id/iv_jam_detail_pengaduan" />-->
 
                 <TextView
                     android:id="@+id/tv_deskripsi_detail_pengaduan"
@@ -92,12 +110,13 @@
                     android:layout_marginTop="@dimen/dimen2x"
                     android:fontFamily="@font/poppins_regular"
                     android:lineSpacingExtra="1dp"
-                    android:text="@string/paragraf"
+                    android:text="@{data.namaJalan}"
                     android:textColor="@color/textGrey"
                     android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="@id/tv_jenis_detail_pengaduan"
-                    app:layout_constraintStart_toStartOf="@id/iv_jam_detail_pengaduan"
-                    app:layout_constraintTop_toBottomOf="@id/iv_jam_detail_pengaduan" />
+                    app:layout_constraintStart_toStartOf="@id/tv_lokasi_detail_pengaduan"
+                    app:layout_constraintTop_toBottomOf="@id/tv_lokasi_detail_pengaduan"
+                    tools:text="@string/paragraf" />
 
                 <TextView
                     android:id="@+id/tv_judul_status_detail_pengaduan"
@@ -116,11 +135,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_medium"
-                    android:text="Status"
+                    android:text="@{data.statusPengaduan}"
                     android:textColor="@color/primaryPetugas"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="@id/tv_lokasi_detail_pengaduan"
-                    app:layout_constraintTop_toBottomOf="@id/tv_judul_status_detail_pengaduan" />
+                    app:layout_constraintTop_toBottomOf="@id/tv_judul_status_detail_pengaduan"
+                    tools:text="Status" />
 
                 <TextView
                     android:id="@+id/tv_judul_laporan_detail_pengaduan"
@@ -140,12 +160,14 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_regular"
                     android:lineSpacingExtra="1dp"
-                    android:text="@string/paragraf"
+                    android:text="@{data.laporanPetugas}"
                     android:textColor="@color/textGrey"
                     android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="@id/tv_jenis_detail_pengaduan"
-                    app:layout_constraintStart_toStartOf="@id/iv_jam_detail_pengaduan"
-                    app:layout_constraintTop_toBottomOf="@id/tv_judul_laporan_detail_pengaduan" />
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@id/tv_judul_laporan_detail_pengaduan"
+                    app:layout_constraintTop_toBottomOf="@id/tv_judul_laporan_detail_pengaduan"
+                    tools:text="@string/paragraf" />
 
                 <TextView
                     android:id="@+id/tv_judul_feedback_detail_pengaduan"
@@ -165,19 +187,35 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_regular"
                     android:lineSpacingExtra="1dp"
-                    android:text="Belum ada"
+                    android:text="@{data.feedbackMasyarakat}"
                     android:textColor="@color/textGrey"
                     android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="@id/tv_jenis_detail_pengaduan"
-                    app:layout_constraintStart_toStartOf="@id/iv_jam_detail_pengaduan"
-                    app:layout_constraintTop_toBottomOf="@id/tv_judul_feedback_detail_pengaduan" />
+                    app:layout_constraintStart_toStartOf="@id/tv_judul_feedback_detail_pengaduan"
+                    app:layout_constraintTop_toBottomOf="@id/tv_judul_feedback_detail_pengaduan"
+                    tools:text="Belum ada" />
 
                 <Button
+                    android:id="@+id/btn_assign"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Edit"
+                    android:layout_marginTop="@dimen/dimen2x"
+                    android:onClick="@{() -> viewModel.assignButtonClick()}"
+                    android:text="Assign"
+                    android:visibility="@{viewModel.loadingEnabled ? View.GONE : View.VISIBLE}"
                     app:layout_constraintEnd_toEndOf="@id/tv_jenis_detail_pengaduan"
                     app:layout_constraintTop_toBottomOf="@id/tv_feedback_detail_pengaduan" />
+
+                <ProgressBar
+                    android:id="@+id/pb_assign"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="@dimen/dimen2x"
+                    android:layout_marginEnd="@dimen/dimen2x"
+                    android:visibility="@{viewModel.loadingEnabled ? View.VISIBLE : View.GONE}"
+                    app:layout_constraintEnd_toEndOf="@id/tv_feedback_detail_pengaduan"
+                    app:layout_constraintTop_toBottomOf="@id/tv_feedback_detail_pengaduan"
+                    tools:visibility="gone" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

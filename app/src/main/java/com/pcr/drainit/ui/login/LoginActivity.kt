@@ -2,6 +2,7 @@ package com.pcr.drainit.ui.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -9,9 +10,11 @@ import androidx.lifecycle.Observer
 import com.google.android.material.snackbar.Snackbar
 import com.pcr.drainit.R
 import com.pcr.drainit.databinding.ActivityLoginBinding
-import com.pcr.drainit.ui.detail.DetailActivity
-import com.pcr.drainit.utill.Session
+import com.pcr.drainit.ui.activity.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
@@ -44,7 +47,16 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun userLoggedIn() {
-        startActivity(Intent(this, DetailActivity::class.java))
+        GlobalScope.launch {
+            delay(1000L)
+
+            val intent = Intent(this@LoginActivity, MainActivity::class.java).apply {
+                putExtra(MainActivity.MAIN_EXTRA_MESSAGE, "User telah login")
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            }
+
+            startActivity(intent)
+        }
     }
 
     private fun formBlank() {
@@ -52,7 +64,10 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun loginSuccess() {
-        startActivity(Intent(this, DetailActivity::class.java))
+        val intent = Intent(this, MainActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        }
+        startActivity(intent)
     }
 
 }

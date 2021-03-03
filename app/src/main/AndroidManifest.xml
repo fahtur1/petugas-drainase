@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+
     <application
         android:name=".BaseApplication"
         android:allowBackup="true"
@@ -13,16 +14,23 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PetugasDrainIt"
         android:usesCleartextTraffic="true">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBrd6mmPAda0nbkNeVcq_N-KaNDcoYQVeY" />
+
         <activity android:name=".ui.login.LoginActivity">
-        </activity>
-        <activity android:name=".ui.detail.DetailActivity" />
-        <activity android:name=".ui.activity.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.activity.MainActivity" />
+        <activity android:name=".ui.detail.pengaduan.DetailPengaduanActivity" />
+        <activity android:name=".ui.detail.riwayat.DetailRiwayatActivity" />
+        <activity android:name=".ui.profil.ProfilPengaturanActivity" />
+
     </application>
 
 </manifest>

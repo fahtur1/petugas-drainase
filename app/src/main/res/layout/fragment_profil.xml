@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="viewModel"
             type="com.pcr.drainit.ui.profil.ProfilViewModel" />
@@ -14,17 +16,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
-        tools:context=".fragment.ProfileFragment">
+        android:background="@color/white">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <View
             android:id="@+id/profil_header"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:background="@color/primaryVariant"
-            app:layout_constraintTop_toTopOf="parent">
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/middle_of_header"
@@ -57,8 +56,8 @@
             android:layout_height="48dp"
             android:layout_marginStart="@dimen/dimen6x"
             android:background="@drawable/bg_ic_rounded"
-            android:contentDescription="TODO"
             android:elevation="@dimen/dimen2x"
+            android:onClick="@{() -> viewModel.pengaturanOnClick()}"
             android:padding="@dimen/dimen1x"
             android:src="@drawable/ic_settings"
             app:layout_constraintBottom_toBottomOf="@id/cv_profil"
@@ -71,6 +70,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen2x"
             android:fontFamily="@font/poppins_medium"
+            android:text="@{viewModel.namaPetugas}"
             android:textColor="@color/textPrimaryVariant"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="@id/cv_profil"
@@ -83,6 +83,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_medium"
+            android:text="@{viewModel.handphonePetugas}"
             android:textSize="17sp"
             app:layout_constraintEnd_toEndOf="@id/cv_profil"
             app:layout_constraintStart_toStartOf="@id/cv_profil"
@@ -120,6 +121,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_medium"
+            android:text="@{viewModel.emailPetugas}"
             android:textSize="13sp"
             app:layout_constraintBottom_toBottomOf="@id/iv_profil_email"
             app:layout_constraintStart_toStartOf="@id/tv_profil_email_text"
@@ -134,51 +136,6 @@
             android:layout_marginVertical="@dimen/dimen2x"
             android:background="#DFDFDF"
             app:layout_constraintTop_toBottomOf="@id/iv_profil_email" />
-
-        <ImageView
-            android:id="@+id/iv_profil_alamat"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="@dimen/dimen5x"
-            android:layout_marginTop="@dimen/dimen2x"
-            android:background="@drawable/bg_ic_orange_rounded"
-            android:padding="13dp"
-            android:src="@drawable/ic_alamat"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/line_separator2" />
-
-        <TextView
-            android:id="@+id/tv_profil_alamat_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dimen2x"
-            android:fontFamily="@font/poppins_medium"
-            android:text="Alamat"
-            android:textColor="@color/textPrimaryVariant"
-            android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@id/iv_profil_alamat"
-            app:layout_constraintTop_toTopOf="@id/iv_profil_alamat" />
-
-        <TextView
-            android:id="@+id/tv_profil_alamat"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/dimen5x"
-            android:fontFamily="@font/poppins_medium"
-            android:textSize="13sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/tv_profil_alamat_text"
-            app:layout_constraintTop_toBottomOf="@id/tv_profil_alamat_text"
-            tools:text="Jalan Tegal Sari Nomor 89B Blok C Perum Dosen RT 04 RW 08 Kecamatan Rumbai Raya Kota Pekanbaru Provinsi Riau" />
-
-        <View
-            android:id="@+id/line_separator2"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginHorizontal="@dimen/dimen5x"
-            android:layout_marginVertical="@dimen/dimen2x"
-            android:background="#DFDFDF"
-            app:layout_constraintTop_toBottomOf="@id/iv_profil_posisi" />
 
         <ImageView
             android:id="@+id/iv_profil_posisi"
@@ -210,10 +167,66 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/dimen5x"
             android:fontFamily="@font/poppins_medium"
+            android:text="@{viewModel.posisiPetugas}"
             android:textSize="13sp"
             app:layout_constraintStart_toStartOf="@id/tv_profil_posisi_text"
             app:layout_constraintTop_toBottomOf="@id/tv_profil_posisi_text"
             tools:text="Bos Besar aamiin" />
+
+        <View
+            android:id="@+id/line_separator2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="@dimen/dimen5x"
+            android:layout_marginVertical="@dimen/dimen2x"
+            android:background="#DFDFDF"
+            app:layout_constraintTop_toBottomOf="@id/iv_profil_posisi" />
+
+        <ImageView
+            android:id="@+id/iv_profil_alamat"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="@dimen/dimen5x"
+            android:layout_marginTop="@dimen/dimen2x"
+            android:background="@drawable/bg_ic_orange_rounded"
+            android:padding="13dp"
+            android:src="@drawable/ic_alamat"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/line_separator2" />
+
+        <TextView
+            android:id="@+id/tv_profil_alamat_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen2x"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Alamat"
+            android:textColor="@color/textPrimaryVariant"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@id/iv_profil_alamat"
+            app:layout_constraintTop_toTopOf="@id/iv_profil_alamat" />
+
+        <TextView
+            android:id="@+id/tv_profil_alamat"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dimen5x"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@{viewModel.alamatPetugas}"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tv_profil_alamat_text"
+            app:layout_constraintTop_toBottomOf="@id/tv_profil_alamat_text"
+            tools:text="Jalan Tegal Sari Nomor 89B Blok C Perum Dosen RT 04 RW 08 Kecamatan Rumbai Raya Kota Pekanbaru Provinsi Riau" />
+
+        <ProgressBar
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:visibility="@{viewModel.loadingEnabled ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="@id/tv_profil_alamat"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_profil_handphone" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

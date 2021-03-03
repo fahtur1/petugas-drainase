@@ -1,5 +1,6 @@
 package com.pcr.drainit.di
 
+import com.pcr.drainit.api.PengaduanService
 import com.pcr.drainit.api.PetugasService
 import dagger.Module
 import dagger.Provides
@@ -15,5 +16,9 @@ object ServiceModule {
     @Singleton
     @Provides
     fun providePetugasService(retrofit: Retrofit) = retrofit.create(PetugasService::class.java)
+
+    @Singleton
+    @Provides
+    fun providePengaduanService(retrofit: Retrofit) = retrofit.create(PengaduanService::class.java)
 
 }

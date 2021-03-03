@@ -8,6 +8,11 @@
         android:title="List Laporan"
         app:cnb_iconColor="@color/primaryVariant" />
     <item
+        android:id="@+id/nav_riwayat"
+        android:icon="@drawable/ic_history"
+        android:title="Riwayat"
+        app:cnb_iconColor="@color/primaryVariant" />
+    <item
         android:id="@+id/nav_map"
         android:icon="@drawable/ic_map"
         android:title="Map"
@@ -17,5 +22,6 @@
         android:icon="@drawable/ic_user"
         android:title="Profil"
         app:cnb_iconColor="@color/primaryVariant" />
+
 
 </menu>
