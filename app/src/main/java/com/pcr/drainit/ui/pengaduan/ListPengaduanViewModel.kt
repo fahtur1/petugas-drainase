@@ -93,12 +93,11 @@ class ListPengaduanViewModel @Inject constructor(
             }
             TYPE_TERSUMBAT -> {
                 listPengaduanItem.clear()
-                if (listTempItem.size > 1)
-                    listTempItem.forEach {
-                        if (it.tipePengaduan == TYPE_TERSUMBAT) {
-                            listPengaduanItem.add(it)
-                        }
+                listTempItem.forEach {
+                    if (it.tipePengaduan == TYPE_TERSUMBAT) {
+                        listPengaduanItem.add(it)
                     }
+                }
                 action.value = ACTION_PENGADUAN_DATA_FILTERED
             }
         }

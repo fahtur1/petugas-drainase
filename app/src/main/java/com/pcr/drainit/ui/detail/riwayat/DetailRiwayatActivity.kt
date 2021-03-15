@@ -34,6 +34,7 @@ class DetailRiwayatActivity : AppCompatActivity() {
         }
 
         detailRiwayatViewModel.apply {
+            selectedValue.value = item?.statusPengaduan
             idLaporan.value = item?.id
             laporanPetugas.value = item?.laporanPetugas
             tempValue = item?.laporanPetugas
@@ -46,6 +47,7 @@ class DetailRiwayatActivity : AppCompatActivity() {
                     DetailRiwayatViewModel.ACTION_DETAIL_RIWAYAT_UPDATED -> onRiwayatUpdated()
                 }
             })
+            setList()
         }
     }
 

@@ -23,6 +23,7 @@ class MapDrainaseViewModel @Inject constructor(
         const val ACTION_MAP_TYPE_SEMUA = "action_map_type_semua"
         const val ACTION_MAP_TYPE_PENGADUAN = "action_map_type_pengaduan"
         const val ACTION_MAP_TYPE_RIWAYAT = "action_map_type_riwayat"
+        const val ACTION_MAP_LIST_READY = "action_map_list_ready"
 
         private const val TYPE_SEMUA = "Semua"
         private const val TYPE_PENGADUAN = "Pengaduan"
@@ -44,6 +45,7 @@ class MapDrainaseViewModel @Inject constructor(
         viewModelScope.launch {
             if (getTitikPengaduan() && getTitikRiwayat()) {
                 areListReady.postValue(true)
+                action.postValue(ACTION_MAP_LIST_READY)
             } else {
                 areListReady.postValue(false)
             }
@@ -66,6 +68,7 @@ class MapDrainaseViewModel @Inject constructor(
                 action.postValue(ACTION_MAP_TIMEOUT)
                 false
             }
+            else -> false
         }
     }
 
@@ -84,6 +87,7 @@ class MapDrainaseViewModel @Inject constructor(
                 action.postValue(ACTION_MAP_TIMEOUT)
                 false
             }
+            else -> false
         }
     }
 

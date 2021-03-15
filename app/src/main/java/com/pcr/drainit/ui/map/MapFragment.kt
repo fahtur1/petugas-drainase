@@ -14,7 +14,6 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.pcr.drainit.R
 import com.pcr.drainit.databinding.FragmentMapBinding
-import com.pcr.drainit.ui.pengaduan.ListPengaduanViewModel
 import com.pcr.drainit.utill.Constant.COORD_PEKANBARU
 import com.pcr.drainit.utill.Util
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,6 +23,8 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
     private lateinit var dataBinding: FragmentMapBinding
     private val mapDrainaseViewModel: MapDrainaseViewModel by viewModels()
+
+    private lateinit var googleMap: GoogleMap
 
     private val listRiwayat = ArrayList<Marker>()
     private val listPengaduan = ArrayList<Marker>()
@@ -58,9 +59,14 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                 MapDrainaseViewModel.ACTION_MAP_TYPE_SEMUA -> filterSemua()
                 MapDrainaseViewModel.ACTION_MAP_TYPE_PENGADUAN -> filterPengaduan()
                 MapDrainaseViewModel.ACTION_MAP_TYPE_RIWAYAT -> filterRiwayat()
+                MapDrainaseViewModel.ACTION_MAP_LIST_READY -> onListReady()
             }
         })
         mapDrainaseViewModel.getSemuaTitik()
+    }
+
+    private fun onListReady() {
+        onMapReady(googleMap)
     }
 
     override fun onResume() {
@@ -70,6 +76,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
     override fun onMapReady(map: GoogleMap?) {
         map?.let { googleMap ->
+            this@MapFragment.googleMap = googleMap
             googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(COORD_PEKANBARU, 13.5f))
             googleMap.setOnMapLoadedCallback {
                 mapDrainaseViewModel.apply {
@@ -86,7 +93,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                                         "${
                                             item.namaJalan?.substring(
                                                 0,
-                                                30
+                                                20
                                             )
                                         } | (${item.statusPengaduan})"
                                     )

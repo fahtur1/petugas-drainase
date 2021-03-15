@@ -5,7 +5,7 @@ import com.google.android.gms.maps.model.LatLng
 object Constant {
 
     const val BASE_URL = "http://gis-drainase.pocari.id/api/"
-    const val IMG_URL = ""
+    const val IMG_URL = "http://gis-drainase.pocari.id/storage/app/public/images/"
 
     val COORD_PEKANBARU = LatLng(0.510440, 101.438309)
 

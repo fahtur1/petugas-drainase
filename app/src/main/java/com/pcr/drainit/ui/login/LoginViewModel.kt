@@ -34,7 +34,7 @@ class LoginViewModel @Inject constructor(
     fun loginOnClick() {
         loadingEnabled.value = true
         if (!emailPetugas.value.isNullOrEmpty() && !passPetugas.value.isNullOrEmpty()) {
-            viewModelScope.launch(Dispatchers.IO) {
+            viewModelScope.launch {
                 val petugas = Petugas(
                     email = emailPetugas.value ?: "",
                     password = passPetugas.value ?: ""

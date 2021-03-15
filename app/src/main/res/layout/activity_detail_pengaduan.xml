@@ -41,6 +41,7 @@
             android:id="@+id/iv_gambar_detail_pengaduan"
             android:layout_width="match_parent"
             android:layout_height="256dp"
+            app:loadImgFromUrl="@{data.foto}"
             android:scaleType="centerCrop"
             android:src="@drawable/sampel"
             app:layout_constraintTop_toTopOf="parent" />

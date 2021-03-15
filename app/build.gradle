@@ -98,4 +98,6 @@ dependencies {
     // Map
     implementation 'com.google.maps.android:maps-utils-ktx:2.3.0'
 
+    // Image Crop
+    implementation 'com.theartofdev.edmodo:android-image-cropper:2.8.0'
 }

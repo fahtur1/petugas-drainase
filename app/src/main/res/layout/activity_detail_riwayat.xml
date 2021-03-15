@@ -121,7 +121,6 @@
                         app:layout_constraintTop_toBottomOf="@id/tv_lokasi_detail_pengaduan"
                         tools:text="@string/paragraf" />
 
-
                     <TextView
                         android:id="@+id/tv_judul_status_detail_pengaduan"
                         android:layout_width="wrap_content"
@@ -130,21 +129,31 @@
                         android:fontFamily="@font/poppins_medium"
                         android:text="Status"
                         android:textColor="@color/textPrimaryVariant"
-                        android:textSize="20sp"
-                        app:layout_constraintStart_toStartOf="@id/tv_lokasi_detail_pengaduan"
-                        app:layout_constraintTop_toBottomOf="@id/tv_deskripsi_detail_pengaduan" />
+                        android:textSize="20sp" />
 
                     <TextView
                         android:id="@+id/tv_status_detail_pengaduan"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_medium"
+                        android:setColorTextFromStatus="@{data.statusPengaduan}"
                         android:text="@{data.statusPengaduan}"
                         android:textColor="@color/primaryPetugas"
                         android:textSize="16sp"
+                        android:visibility="@{viewModel.editEnabled ? View.GONE : View.VISIBLE}"
                         app:layout_constraintStart_toStartOf="@id/tv_lokasi_detail_pengaduan"
                         app:layout_constraintTop_toBottomOf="@id/tv_judul_status_detail_pengaduan"
                         tools:text="Status" />
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_item_pengaturan"
+                        android:entries="@array/list_status"
+                        android:selectedItemPosition="@={viewModel.positionSelected}"
+                        android:setEntries="@{viewModel.listStatusPengaduan}"
+                        android:visibility="@{viewModel.editEnabled ? View.VISIBLE : View.GONE}"
+                        tools:visibility="gone" />
 
                     <TextView
                         android:id="@+id/tv_judul_laporan_detail_pengaduan"
@@ -180,12 +189,12 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="@dimen/dimen1x"
                         android:elevation="@dimen/dimen2x"
-
                         android:visibility="@{viewModel.editEnabled ? View.VISIBLE : View.GONE}"
                         app:hintEnabled="false"
                         app:layout_constraintEnd_toEndOf="@id/tv_jenis_detail_pengaduan"
                         app:layout_constraintStart_toStartOf="@id/tv_judul_laporan_detail_pengaduan"
-                        app:layout_constraintTop_toBottomOf="@id/tv_judul_laporan_detail_pengaduan">
+                        app:layout_constraintTop_toBottomOf="@id/tv_judul_laporan_detail_pengaduan"
+                        tools:visibility="gone">
 
                         <com.google.android.material.textfield.TextInputEditText
                             style="@style/EditText"

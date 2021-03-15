@@ -3,7 +3,9 @@
     package="com.pcr.drainit">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:name=".BaseApplication"
@@ -30,6 +32,11 @@
         <activity android:name=".ui.detail.pengaduan.DetailPengaduanActivity" />
         <activity android:name=".ui.detail.riwayat.DetailRiwayatActivity" />
         <activity android:name=".ui.profil.ProfilPengaturanActivity" />
+        <activity android:name=".ui.profil.edit.profil.EditProfileActivity" />
+        <activity android:name=".ui.profil.edit.password.EditPasswordActivity" />
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" />
 
     </application>
 

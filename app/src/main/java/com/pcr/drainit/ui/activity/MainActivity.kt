@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity(), ChipNavigationBar.OnItemSelectedListen
         const val MAIN_EXTRA_MESSAGE = "main_extra_message"
     }
 
-    private lateinit var dataBinding: ActivityMainBinding
+    lateinit var dataBinding: ActivityMainBinding
 
     private lateinit var navHostFragment: NavHostFragment
     private lateinit var navController: NavController

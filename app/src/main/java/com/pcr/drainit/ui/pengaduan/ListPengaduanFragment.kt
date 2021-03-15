@@ -1,21 +1,30 @@
 package com.pcr.drainit.ui.pengaduan
 
+import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.pcr.drainit.R
-import com.pcr.drainit.databinding.FragmentListPengaduanBinding
 import com.pcr.drainit.adapter.RecyclerViewPengaduanAdapter
+import com.pcr.drainit.databinding.FragmentListPengaduanBinding
+import com.pcr.drainit.ui.activity.MainActivity
 import com.pcr.drainit.ui.detail.pengaduan.DetailPengaduanActivity
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class ListPengaduanFragment : Fragment() {
@@ -24,7 +33,21 @@ class ListPengaduanFragment : Fragment() {
     private lateinit var pengaduanAdapter: RecyclerViewPengaduanAdapter
     private val listPengaduanViewModel: ListPengaduanViewModel by viewModels()
 
+    private lateinit var launcher: ActivityResultLauncher<Intent>
+
     private var checkedItem = 0
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        launcher = registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()
+        ) { activityResult ->
+            if (activityResult.resultCode == Activity.RESULT_OK) {
+                (activity as MainActivity).dataBinding.navbarMain.setItemSelected(R.id.nav_riwayat)
+            }
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -87,7 +110,7 @@ class ListPengaduanFragment : Fragment() {
         val intent = Intent(requireContext(), DetailPengaduanActivity::class.java)
         intent.putExtra(DetailPengaduanActivity.DETAIL_EXTRA_PARCEL, itemClicked)
 
-        startActivity(intent)
+        launcher.launch(intent)
     }
 
     private fun onListUpdate() {

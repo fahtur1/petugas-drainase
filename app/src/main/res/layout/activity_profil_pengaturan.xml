@@ -42,6 +42,33 @@
 
         </RelativeLayout>
 
+        <RelativeLayout
+            android:id="@+id/rv_edit_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_item_pengaturan"
+            android:clickable="true"
+            android:paddingHorizontal="@dimen/dimen2x"
+            android:paddingVertical="@dimen/dimen2x">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Ubah Password"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/iv_next_password"
+                android:layout_width="24dp"
+                android:layout_height="16dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_next" />
+
+        </RelativeLayout>
+
         <Button
             android:id="@+id/btn_logout"
             android:layout_width="match_parent"

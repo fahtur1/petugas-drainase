@@ -20,4 +20,12 @@
     <color name="textColorHint">#A1A1A1</color>
     <color name="lightGreyBackground">#F1F1F1</color>
 
+    <!-- Status-->
+    <color name="statusRiwayatProses">#FFA200</color>
+    <color name="statusRiwayatSelesai">#4CAF50</color>
+    <color name="statusPengaduanTolak">#F44336</color>
+    <color name="statusPengaduanVerified">#4CAF50</color>
+
+    <color name="greyMedOpacity">#A6323232</color>
+
 </resources>

@@ -1,5 +1,6 @@
 package com.pcr.drainit.ui.detail.riwayat
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.pcr.drainit.repository.MainRepository
@@ -27,10 +28,22 @@ class DetailRiwayatViewModel @Inject constructor(
     val idLaporan = MutableLiveData<String>()
     val editEnabled = MutableLiveData<Boolean>()
     val laporanPetugas = MutableLiveData<String>()
+    val positionSelected = MutableLiveData<Int>()
+    val selectedValue = MutableLiveData<String>()
+    val listStatusPengaduan = MutableLiveData<List<Any>>()
+
     var tempValue: String? = ""
 
     init {
         editEnabled.value = false
+    }
+
+    fun setList() {
+        if (selectedValue.value == "Laporan Proses") {
+            listStatusPengaduan.value = arrayListOf("Laporan Proses", "Laporan Selesai")
+        } else {
+            listStatusPengaduan.value = arrayListOf("Laporan Selesai", "Laporan Proses")
+        }
     }
 
     fun onBackButtonClick() {
@@ -63,7 +76,8 @@ class DetailRiwayatViewModel @Inject constructor(
             when (val response = repository.updatePengaduan(
                 Session.bearer ?: "",
                 idLaporan.value ?: "",
-                laporanPetugas.value ?: ""
+                laporanPetugas.value ?: "",
+                listStatusPengaduan.value?.get(positionSelected.value ?: 0).toString()
             )) {
                 is Resource.Success -> {
                     when (response.statusCode) {

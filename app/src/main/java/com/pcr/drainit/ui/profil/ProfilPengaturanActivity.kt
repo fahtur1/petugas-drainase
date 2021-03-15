@@ -1,17 +1,17 @@
 package com.pcr.drainit.ui.profil
 
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.pcr.drainit.R
 import com.pcr.drainit.databinding.ActivityProfilPengaturanBinding
 import com.pcr.drainit.ui.login.LoginActivity
+import com.pcr.drainit.ui.profil.edit.password.EditPasswordActivity
+import com.pcr.drainit.ui.profil.edit.profil.EditProfileActivity
 import com.pcr.drainit.utill.Session
 
 class ProfilPengaturanActivity : AppCompatActivity(), View.OnClickListener {
@@ -30,6 +30,7 @@ class ProfilPengaturanActivity : AppCompatActivity(), View.OnClickListener {
         dataBinding.apply {
             rvEditProfile.setOnClickListener(this@ProfilPengaturanActivity)
             btnLogout.setOnClickListener(this@ProfilPengaturanActivity)
+            rvEditPassword.setOnClickListener(this@ProfilPengaturanActivity)
         }
     }
 
@@ -47,7 +48,12 @@ class ProfilPengaturanActivity : AppCompatActivity(), View.OnClickListener {
         when (v?.id) {
             R.id.rv_edit_profile -> onEditProfileClick()
             R.id.btn_logout -> onBtnLogoutClick()
+            R.id.rv_edit_password -> onEditPasswordClick()
         }
+    }
+
+    private fun onEditPasswordClick() {
+        startActivity(Intent(this, EditPasswordActivity::class.java))
     }
 
     private fun onBtnLogoutClick() {
@@ -68,7 +74,7 @@ class ProfilPengaturanActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun onEditProfileClick() {
-
+        startActivity(Intent(this, EditProfileActivity::class.java))
     }
 
 }

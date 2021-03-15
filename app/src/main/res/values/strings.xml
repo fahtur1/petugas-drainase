@@ -15,4 +15,9 @@ and have energy.</string>
 
     <string name="api_key">AIzaSyBrd6mmPAda0nbkNeVcq_N-KaNDcoYQVeY</string>
 
+    <string-array name="list_status">
+        <item>Laporan Selesai</item>
+        <item>Laporan Diproses</item>
+    </string-array>
+
 </resources>

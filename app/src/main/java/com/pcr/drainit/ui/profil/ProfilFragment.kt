@@ -48,6 +48,11 @@ class ProfilFragment : Fragment() {
         })
     }
 
+    override fun onResume() {
+        super.onResume()
+        profilViewModel.getUserProfile()
+    }
+
     private fun pengaturanOnClick() {
         startActivity(Intent(requireContext(), ProfilPengaturanActivity::class.java))
     }

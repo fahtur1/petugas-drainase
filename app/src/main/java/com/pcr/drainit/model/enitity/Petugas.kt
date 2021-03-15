@@ -1,5 +1,6 @@
 package com.pcr.drainit.model.enitity
 
+
 import com.google.gson.annotations.SerializedName
 
 data class Petugas(
@@ -10,7 +11,7 @@ data class Petugas(
     @SerializedName("email")
     var email: String? = "",
     @SerializedName("email_verified_at")
-    var emailVerifiedAt: Any? = "",
+    var emailVerifiedAt: Any? = Any(),
     @SerializedName("foto")
     var foto: String? = "",
     @SerializedName("id")
@@ -19,8 +20,6 @@ data class Petugas(
     var nama: String? = "",
     @SerializedName("no_hp")
     var noHp: String? = "",
-    @SerializedName("password")
-    var password: String? = "",
     @SerializedName("posisi_petugas")
     var posisiPetugas: String? = "",
     @SerializedName("tempat_lahir")
@@ -28,5 +27,7 @@ data class Petugas(
     @SerializedName("tgl_lahir")
     var tglLahir: String? = "",
     @SerializedName("updated_at")
-    var updatedAt: String? = ""
+    var updatedAt: String? = "",
+    @SerializedName("password")
+    var password: String? = ""
 )

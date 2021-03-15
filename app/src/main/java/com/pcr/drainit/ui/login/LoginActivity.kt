@@ -2,7 +2,6 @@ package com.pcr.drainit.ui.login
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -31,15 +30,20 @@ class LoginActivity : AppCompatActivity() {
             viewModel = loginViewModel
         }
 
-        loginViewModel.action.observe(this, Observer { action ->
+        loginViewModel.action.observe(this, { action ->
             when (action) {
                 LoginViewModel.ACTION_LOGIN_SUCCESS -> loginSuccess()
                 LoginViewModel.ACTION_LOGIN_FORM_BLANK -> formBlank()
                 LoginViewModel.ACTION_LOGIN_USER_LOGGEDIN -> userLoggedIn()
                 LoginViewModel.ACTION_LOGIN_INVALID -> userInvalid()
+                LoginViewModel.ACTION_LOGIN_FAILED -> loginFailed()
             }
         })
         loginViewModel.checkSession()
+    }
+
+    private fun loginFailed() {
+        Snackbar.make(dataBinding.root, "Password salah", Snackbar.LENGTH_SHORT).show()
     }
 
     private fun userInvalid() {

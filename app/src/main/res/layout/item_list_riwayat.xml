@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/dimen4x"
-        android:layout_marginTop="@dimen/dimen2x"
+        android:layout_marginVertical="@dimen/dimen1x"
         android:elevation="@dimen/dimen6x"
         app:cardCornerRadius="@dimen/dimen1x">
 
@@ -39,7 +39,8 @@
                 android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:loadImgFromUrl="@{data.foto}" />
 
             <TextView
                 android:id="@+id/tv_item_lokasi"
@@ -48,6 +49,7 @@
                 android:layout_marginStart="@dimen/dimen2x"
                 android:fontFamily="@font/poppins_medium"
                 android:maxLength="20"
+                android:maxLines="1"
                 android:text="@{data.namaJalan}"
                 android:textColor="@color/textPrimaryVariant"
                 android:textSize="16sp"
@@ -74,6 +76,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_bold"
+                android:setColorTextFromStatus="@{data.statusPengaduan}"
                 android:text="@{data.statusPengaduan}"
                 android:textColor="@color/textPrimaryVariant"
                 android:textSize="13sp"

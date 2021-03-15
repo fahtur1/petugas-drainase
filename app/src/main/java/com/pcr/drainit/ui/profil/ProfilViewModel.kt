@@ -26,6 +26,7 @@ class ProfilViewModel @Inject constructor(
     val emailPetugas = MutableLiveData<String>()
     val posisiPetugas = MutableLiveData<String>()
     val alamatPetugas = MutableLiveData<String>()
+    val fotoPetugas = MutableLiveData<String>()
 
     fun getUserProfile() {
         loadingEnabled.value = true
@@ -36,6 +37,7 @@ class ProfilViewModel @Inject constructor(
                     when (response.statusCode) {
                         HttpURLConnection.HTTP_OK -> {
                             response.data?.let { dataPetugas ->
+                                fotoPetugas.postValue(dataPetugas.foto ?: "")
                                 namaPetugas.postValue(dataPetugas.nama ?: "")
                                 handphonePetugas.postValue(dataPetugas.noHp ?: "")
                                 emailPetugas.postValue(dataPetugas.email ?: "")
